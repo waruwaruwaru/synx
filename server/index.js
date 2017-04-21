@@ -10,7 +10,7 @@ const cors = require('cors');
 
 //DB Setup
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:auth/auth');
+mongoose.connect('mongodb://localhost:synx/synx');
 
 //App, all about getting express working
 //morgan and bodyParser are both middlewares, any incoming request will go to them. app.use register them as middlewares
