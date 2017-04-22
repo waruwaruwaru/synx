@@ -4,12 +4,12 @@ import { Link } from 'react-router';
 
 class Header extends Component {
   renderLinks() {
-    //if user is signed in
+    //if user is signed inz
     if (this.props.authenticated) {
       //Show a sign out link
       return (
-        <li className="nav-item">
-          <Link className="nav-link" to="/signout">Sign Out</Link>
+        <li>
+          <Link to="/signout">Sign Out</Link>
         </li>
       );
     }
@@ -17,11 +17,14 @@ class Header extends Component {
     else {
       //Show a sign up or sign in Link
       return [
-        <li className="nav-item" key={1}>
-          <Link className="nav-link" to="/signin">Sign In</Link>
+        <li key={1}>
+          <Link to="/signin">Sign In</Link>
         </li>,
-        <li className="nav-item" key={2}>
-          <Link className="nav-link" to="/signup">Sign Up</Link>
+        <li key={2}>
+          <Link to="/signup">Sign Up</Link>
+        </li>,
+        <li key={3}>
+          <Link to="">Guest Login</Link>
         </li>
       ];
 
@@ -30,12 +33,17 @@ class Header extends Component {
 
   render() {
     return(
-      <nav className="navbar navbar-light">
-        <Link to='/' className="navbar-brand">Redux Auth</Link>
-        <ul className="nav navbar-nav">
-          {this.renderLinks()}
-        </ul>
-      </nav>
+      <div>
+        <header id="header">
+          <h1>Synx</h1>
+          <nav id="nav">
+            <ul>
+              <Link to='/'>Home</Link>
+                {this.renderLinks()}
+            </ul>
+          </nav>
+        </header>
+      </div>
     );
   }
 }
