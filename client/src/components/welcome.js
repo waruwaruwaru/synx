@@ -6,7 +6,7 @@ class Welcome extends Component {
     this.state = {
       currentImage: ''
     };
-    this.currentImage();
+    //this.currentImage();
   }
 
   componentDidMount() {
