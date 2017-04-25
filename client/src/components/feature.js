@@ -8,7 +8,7 @@ class Feature extends Component {
   }
   render() {
     return (
-      <div>{this.props.message}</div>
+      <div id="feature">{this.props.message}</div>
     );
   }
 }

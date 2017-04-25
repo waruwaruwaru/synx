@@ -21,7 +21,7 @@ export function signinUser({ email, password }) {
         dispatch({ type: AUTH_USER });
         // - Save the JWT Token
         localStorage.setItem('token', response.data.token); //localStorage is a built in function from windows.
-        // - redirect to router '/feature'
+        // - redirect to router '/find'
         browserHistory.push('/feature');
       })
 
@@ -49,8 +49,8 @@ export function signupUser({ email, password }) { //notice we dont pass in passw
       dispatch({ type: AUTH_USER });
       // - Save the JWT Token
       localStorage.setItem('token', response.data.token); //localStorage is a built in function from windows.
-      // - redirect to router '/feature'
-      browserHistory.push('/feature');
+      // - redirect to router '/find'
+      browserHistory.push('/find');
     })
 
     .catch(error => { //Have to use error => instead of response => because axios library changed
@@ -63,6 +63,12 @@ export function signoutUser() {
   //We don't want a user to have a token anymore since they're signed out
   localStorage.removeItem('token');
   return { type: UNAUTH_USER };
+}
+
+export function guestUser() {
+  //Guest login, we will automatically authenticate and remove any existing token.
+  localStorage.removeItem('token');
+  return { type: AUTH_USER };
 }
 
 export function fetchMessage() {

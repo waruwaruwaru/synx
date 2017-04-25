@@ -27,19 +27,21 @@ class Signin extends Component {
 
     return (
       //if you dont use .bind(this) .. the context of 'this' will be unknown to the handleFormSubmit function.
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <fieldset className="form-group">
-          <label>Email:</label>
-          <input  {...email} className="form-control" />
-        </fieldset>
+      <div id="signin">
+        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+          <fieldset className="form-group">
+            <label>Email:</label>
+            <input  {...email} className="form-control" />
+          </fieldset>
 
-        <fieldset className="form-group">
-          <label>Password:</label>
-          <input {...password} type="password" className="form-control" />
-        </fieldset>
-        {this.renderAlert()}
-        <button action="submit" className="btn btn-primary">Sign In</button>
-      </form>
+          <fieldset className="form-group">
+            <label>Password:</label>
+            <input {...password} type="password" className="form-control" />
+          </fieldset>
+          {this.renderAlert()}
+          <button action="submit" className="btn btn-primary">Sign In</button>
+        </form>
+      </div>
     );
   }
 }

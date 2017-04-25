@@ -24,7 +24,7 @@ class Header extends Component {
           <Link to="/signup">Sign Up</Link>
         </li>,
         <li key={3}>
-          <Link to="">Guest Login</Link>
+          <Link to="/guest">Guest Login</Link>
         </li>
       ];
 
@@ -38,7 +38,8 @@ class Header extends Component {
           <h1>Synx</h1>
           <nav id="nav">
             <ul>
-              <Link to='/'>Home</Link>
+              <li key={0}><Link to='/'>Home</Link></li>
+              <li key={4}><Link to='feature'>Find</Link></li>
                 {this.renderLinks()}
             </ul>
           </nav>
