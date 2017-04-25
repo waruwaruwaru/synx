@@ -128,3 +128,12 @@ body {
 				display: block;
 				width: 100%;
 			}
+
+/*Google Map*/
+#googleMap {
+  height: 700px;
+  width: 50%;
+  position: absolute;
+  right: 0px;
+
+}

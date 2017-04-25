@@ -35,10 +35,9 @@ class Header extends Component {
     return(
       <div>
         <header id="header">
-          <h1>Synx</h1>
+          <h1 id="synx"><Link to='/'>Synx</Link></h1>
           <nav id="nav">
             <ul>
-              <li key={0}><Link to='/'>Home</Link></li>
               <li key={4}><Link to='feature'>Find</Link></li>
                 {this.renderLinks()}
             </ul>
