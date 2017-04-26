@@ -4,10 +4,12 @@ import {
   AUTH_USER,
   UNAUTH_USER,
   AUTH_ERROR,
-  FETCH_MESSAGE
+  FETCH_MESSAGE,
+  FETCH_LOCATION
  } from './types';
 
 const ROOT_URL = 'http://localhost:3090';
+const LOCATION_URL = 'http://maps.google.com/maps/api/geocode/json?address=';
 
 export function signinUser({ email, password }) {
   //redux thunk allows us to return a function in a action creator and it will automatically call dispatch method
@@ -82,6 +84,21 @@ export function fetchMessage() {
           type: FETCH_MESSAGE,
           payload: response.data.message
         });
+      });
+  }
+}
+
+export default function fetchLocation(address) {
+  return function(dispatch) {
+    //To Do: get the location data,
+    //make a axios.get request with the location data
+    axios.get(`${LOCATION_URL}address`)
+      .then(response => {
+        //dispatch it.
+        dispatch({
+          type: FETCH_LOCATION,
+          payload: response.results.geometry.location
+        })
       });
   }
 }
