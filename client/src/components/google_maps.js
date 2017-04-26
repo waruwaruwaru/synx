@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class GoogleMap extends Component {
   constructor(props) {
@@ -23,15 +24,16 @@ class GoogleMap extends Component {
   }
 
   addMarker() {
-    this.setState({markers: [{lat: 38.8044, lng: -122.419416}, {lat: 40.8044, lng: -122.419416}, {lat: 50.8044, lng: -122.419416}]});
-    var marks = [];
-    for(var i = 0; i < this.state.markers.length; i++) {
-      console.log(this.state.markers[i]);
-      marks[i] = new google.maps.Marker({
-        position: this.state.markers[i],
-        map: this.state.map
-      });
-    }
+    console.log(this.props.location.location);
+    // this.setState({markers: [{lat: 38.8044, lng: -122.419416}, {lat: 40.8044, lng: -122.419416}, {lat: 50.8044, lng: -122.419416}]});
+    // var marks = [];
+    // for(var i = 0; i < this.state.markers.length; i++) {
+    //   console.log(this.state.markers[i]);
+    //   marks[i] = new google.maps.Marker({
+    //     position: this.state.markers[i],
+    //     map: this.state.map
+    //   });
+    // }
   }
 
   render() {
@@ -43,5 +45,7 @@ class GoogleMap extends Component {
     );
   }
 }
-
-export default GoogleMap;
+function mapStateToProps(state) {
+  return { location: state.location };
+}
+export default connect(mapStateToProps)(GoogleMap);

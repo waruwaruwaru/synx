@@ -18,13 +18,11 @@ class Feature extends Component {
   }
 
   onSubmit(props) {
-    //console.log(this.props.values.address);
+    //Implement an add Marker function
+    //Do an HTTP call to some API that can get the location
     this.props.fetchLocation(this.props.values.address);
-    /*Implement an add Marker function
-    Do an HTTP call to some API that can get the location
-    Save the location data into MongoDB
-    redirect user to /feature, it should refresh and display all Markers in the database
-    */
+    //Save the location data into MongoDB
+    //redirect user to /feature, it should refresh and display all Markers in the database
   }
 
   render() {
