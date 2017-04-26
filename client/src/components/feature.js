@@ -18,6 +18,8 @@ class Feature extends Component {
   }
 
   onSubmit(props) {
+    //console.log(this.props.values.address);
+    this.props.fetchLocation(this.props.values.address);
     /*Implement an add Marker function
     Do an HTTP call to some API that can get the location
     Save the location data into MongoDB
