@@ -7,3 +7,6 @@ Nodemon, body-parser, morgan, express, passport-local, passport-js, passport-jwt
 
 # database
 Hosted on MongoDB synx
+
+
+#Self: Stopped on GoogleMap/feature component. Get the coordinates to translate to markers on googlemap

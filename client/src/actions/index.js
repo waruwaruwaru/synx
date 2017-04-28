@@ -9,7 +9,7 @@ import {
  } from './types';
 
 const ROOT_URL = 'http://localhost:3090';
-const LOCATION_URL = 'http://maps.google.com/maps/api/geocode/json?address=davis';
+const LOCATION_URL = 'http://maps.google.com/maps/api/geocode/json?address=';
 
 export function signinUser({ email, password }) {
   //redux thunk allows us to return a function in a action creator and it will automatically call dispatch method
@@ -92,8 +92,8 @@ export function fetchLocation(address) {
   return function(dispatch) {
     //To Do: get the location data,
     //make a axios.get request with the location data
-    console.log(LOCATION_URL);
-    axios.get(LOCATION_URL)
+    console.log(LOCATION_URL+address);
+    axios.get(LOCATION_URL+address)
       .then(response => {
         //dispatch it.
         dispatch({

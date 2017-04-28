@@ -25,15 +25,17 @@ class GoogleMap extends Component {
 
   addMarker() {
     console.log(this.props.location.location);
-    // this.setState({markers: [{lat: 38.8044, lng: -122.419416}, {lat: 40.8044, lng: -122.419416}, {lat: 50.8044, lng: -122.419416}]});
-    // var marks = [];
-    // for(var i = 0; i < this.state.markers.length; i++) {
-    //   console.log(this.state.markers[i]);
-    //   marks[i] = new google.maps.Marker({
-    //     position: this.state.markers[i],
-    //     map: this.state.map
-    //   });
-    // }
+    this.setState({ markers: this.props.location.location }, function(){
+      console.log(this.state.markers);
+      var marks = [];
+      for(var i = 0; i < this.state.markers.length; i++) {
+        console.log("Did I ever get here?");
+        marks[i] = new google.maps.Marker({
+          position: this.state.markers[i],
+          map: this.state.map
+        });
+      }
+    });
   }
 
   render() {
