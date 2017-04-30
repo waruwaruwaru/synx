@@ -40,23 +40,17 @@ class GoogleMap extends Component {
     var markers = this.state.markers;
     markers.push(this.props.location.location);
     this.setState({ markers: markers }, function(){
-      var marks = [];
-      for(var i = 0; i < this.state.markers.length; i++) {
-        //Display the description in the marker
-        // var infowindow = new google.maps.InfoWindow({
-        //   content: "TESTING TESTING"
-        // });
+      var mark;
+      // var marks = [];
+      for(var i = this.state.markers.length - 1; i < this.state.markers.length; i++) {
 
         //Display marker location on Google Map
-        marks[i] = new google.maps.Marker({
+        mark = new google.maps.Marker({
           position: this.state.markers[i],
           map: map
         });
-        this.addInfoWindow(marks[i], "TEST");
-        // // Listener to show the description during onClick
-        // marks[i].addListener('click', function() {
-        //   infowindow.open(map, marks[i]);
-        // });
+        //Call helper method to create description for Marker
+        this.addInfoWindow(mark, this.props.game);
       }
     });
   }

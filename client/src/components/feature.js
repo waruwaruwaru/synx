@@ -36,7 +36,7 @@ class Feature extends Component {
           </fieldset>
           <button type="submit" className="btn btn-primary">Submit!</button>
         </form>
-        <GoogleMap />
+        <GoogleMap game={ this.props.values.game } />
       </div>
     );
   }
