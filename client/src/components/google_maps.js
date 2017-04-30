@@ -23,25 +23,44 @@ class GoogleMap extends Component {
     });
   }
 
+  addInfoWindow(marker, content) {
+    var map = this.state.map;
+    var infoWindow = new google.maps.InfoWindow({
+        content: content
+    });
+    google.maps.event.addListener(marker, 'click', function () {
+        infoWindow.open(map, marker);
+    });
+  }
+
   addMarker() {
     //console.log(this.props.location.location);
     //console.log(this.state.markers);
+    var map = this.state.map;
     var markers = this.state.markers;
     markers.push(this.props.location.location);
     this.setState({ markers: markers }, function(){
-      console.log(this.state.markers);
       var marks = [];
       for(var i = 0; i < this.state.markers.length; i++) {
-        console.log("Did I ever get here?");
+        //Display the description in the marker
+        // var infowindow = new google.maps.InfoWindow({
+        //   content: "TESTING TESTING"
+        // });
+
+        //Display marker location on Google Map
         marks[i] = new google.maps.Marker({
           position: this.state.markers[i],
-          map: this.state.map
+          map: map
         });
-        console.log(marks[i]);
-        console.log("^ my marker");
+        this.addInfoWindow(marks[i], "TEST");
+        // // Listener to show the description during onClick
+        // marks[i].addListener('click', function() {
+        //   infowindow.open(map, marks[i]);
+        // });
       }
     });
   }
+
 
   render() {
     return(
@@ -52,6 +71,8 @@ class GoogleMap extends Component {
     );
   }
 }
+
+
 function mapStateToProps(state) {
   return { location: state.location };
 }

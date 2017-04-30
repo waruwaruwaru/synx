@@ -6,12 +6,6 @@ import { reduxForm } from 'redux-form';
 
 
 class Feature extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      markers: []
-    }
-  }
   componentWillMount() {
     this.props.fetchMessage();
     //this.props.getMarkers();
