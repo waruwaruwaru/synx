@@ -24,8 +24,11 @@ class GoogleMap extends Component {
   }
 
   addMarker() {
-    console.log(this.props.location.location);
-    this.setState({ markers: this.props.location.location }, function(){
+    //console.log(this.props.location.location);
+    //console.log(this.state.markers);
+    var markers = this.state.markers;
+    markers.push(this.props.location.location);
+    this.setState({ markers: markers }, function(){
       console.log(this.state.markers);
       var marks = [];
       for(var i = 0; i < this.state.markers.length; i++) {
@@ -34,6 +37,8 @@ class GoogleMap extends Component {
           position: this.state.markers[i],
           map: this.state.map
         });
+        console.log(marks[i]);
+        console.log("^ my marker");
       }
     });
   }
