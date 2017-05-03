@@ -17,10 +17,10 @@ class GoogleMap extends Component {
     center: uluru
     });
 
-    var marker = new google.maps.Marker({
-      position: uluru,
-      map: this.state.map
-    });
+    // var marker = new google.maps.Marker({
+    //   position: uluru,
+    //   map: this.state.map
+    // });
   }
 
   addInfoWindow(marker, content) {
@@ -41,17 +41,13 @@ class GoogleMap extends Component {
     markers.push(this.props.location.location);
     this.setState({ markers: markers }, function(){
       var mark;
-      // var marks = [];
-      for(var i = this.state.markers.length - 1; i < this.state.markers.length; i++) {
-
-        //Display marker location on Google Map
-        mark = new google.maps.Marker({
-          position: this.state.markers[i],
-          map: map
-        });
-        //Call helper method to create description for Marker
-        this.addInfoWindow(mark, this.props.game);
-      }
+      //Display marker location on Google Map
+      mark = new google.maps.Marker({
+        position: this.state.markers[this.state.markers.length - 1],
+        map: map
+      });
+      //Call helper method to create description for Marker
+      this.addInfoWindow(mark, this.props.game);
     });
   }
 
@@ -60,7 +56,7 @@ class GoogleMap extends Component {
     return(
       <div>
         <div ref="map" id="googleMap" />
-        <button onClick={this.addMarker.bind(this)}>Button</button>
+        <button id="fetchGame" className="btn btn-primary" onClick={this.addMarker.bind(this)}>Fetch Games</button>
       </div>
     );
   }
