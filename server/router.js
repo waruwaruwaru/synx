@@ -1,6 +1,7 @@
 const Authentication = require('./controllers/authentication');
 const passportService = require('./services/passport');
 const passport = require('passport');
+const GameEvent = require('./controllers/event');
 
 const requireSignin = passport.authenticate('local', { session: false });
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -14,4 +15,6 @@ module.exports = function(app) {
   });
   app.post('/signin', requireSignin, Authentication.signin)
   app.post('/signup', Authentication.signup);
+  app.post('/addEvent', GameEvent.addEvent);
+
 }
