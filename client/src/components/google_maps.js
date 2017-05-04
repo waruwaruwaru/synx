@@ -18,11 +18,18 @@ class GoogleMap extends Component {
     center: uluru
     });
 
-    // var marker = new google.maps.Marker({
-    //   position: uluru,
-    //   map: this.state.map
-    // });
+    //Fetch the existing events from DB
+    this.props.fetchMarkers();
+
+
+    //You are getting an empty on fetchedMarkers because maybe it takes too long for AJAX call to finish,
+    //So... what happen is when you console.log this.props.fetchMarkers, it is giving the initial state before
+    //the AJAX call finished, which is an empty object {}.
+    console.log(this.props.fetchedMarkers);
+    //NEED TO ANTI-JSON.stringify so actual markers
   }
+
+
 
   addInfoWindow(marker, content) {
     var map = this.state.map;
@@ -35,8 +42,6 @@ class GoogleMap extends Component {
   }
 
   addMarker() {
-    //console.log(this.props.location.location);
-    //console.log(this.state.markers);
     var map = this.state.map;
     var markers = this.state.markers;
     markers.push(this.props.location.location);
@@ -68,6 +73,9 @@ class GoogleMap extends Component {
 
 
 function mapStateToProps(state) {
-  return { location: state.location };
+  return {
+    location: state.location,
+    fetchedMarkers: state.markers
+   };
 }
 export default connect(mapStateToProps, actions)(GoogleMap);

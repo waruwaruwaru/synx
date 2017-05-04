@@ -5,7 +5,8 @@ import {
   UNAUTH_USER,
   AUTH_ERROR,
   FETCH_MESSAGE,
-  FETCH_LOCATION
+  FETCH_LOCATION,
+  FETCH_MARKERS
  } from './types';
 
 const ROOT_URL = 'http://localhost:3090';
@@ -105,8 +106,6 @@ export function fetchLocation(address) {
 }
 
 export function addEvent({game, location}) {
-  console.log(game);
-  console.log(location);
   return function(dispatch) {
     axios.post(`${ROOT_URL}/addEvent`, {game, location: JSON.stringify(location)})
       .then(response => {
@@ -116,5 +115,18 @@ export function addEvent({game, location}) {
         })
       });
   }
+}
 
+
+export function fetchMarkers() {
+  return function(dispatch) {
+    console.log(`${ROOT_URL}/fetchEvents`);
+    axios.get(`${ROOT_URL}/fetchEvents`)
+      .then(response => {
+        dispatch({
+          type: FETCH_MARKERS,
+          payload: response.data
+        })
+      });
+  }
 }

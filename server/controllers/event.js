@@ -18,4 +18,9 @@ exports.addEvent = function(req, res, next) {
 
 exports.fetchEvents = function(req, res, next) {
   //TODO: Fetch all the gameEvents in the DB
+  GameEvent.find(function(err, game) {
+    if(err)
+      res.json("error");
+    res.send(game);  
+  });
 }
