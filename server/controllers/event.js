@@ -2,11 +2,11 @@ const GameEvent = require('../models/game_event');
 
 exports.addEvent = function(req, res, next) {
   const game = req.body.game;
-  const address = req.body.address;
-  
+  const location = req.body.location;
+
   const gameEvent = new GameEvent({
     game: game,
-    address: address
+    location: location
   });
 
   gameEvent.save(function(err) {

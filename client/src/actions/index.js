@@ -51,8 +51,8 @@ export function signupUser({ email, password }) { //notice we dont pass in passw
       dispatch({ type: AUTH_USER });
       // - Save the JWT Token
       localStorage.setItem('token', response.data.token); //localStorage is a built in function from windows.
-      // - redirect to router '/find'
-      browserHistory.push('/find');
+      // - redirect to router '/feature'
+      browserHistory.push('/feature');
     })
 
     .catch(error => { //Have to use error => instead of response => because axios library changed
@@ -102,4 +102,19 @@ export function fetchLocation(address) {
         })
       });
   }
+}
+
+export function addEvent({game, location}) {
+  console.log(game);
+  console.log(location);
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/addEvent`, {game, location: JSON.stringify(location)})
+      .then(response => {
+        dispatch({
+          type: FETCH_LOCATION,
+          payload: response.data.message
+        })
+      });
+  }
+
 }

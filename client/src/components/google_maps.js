@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class GoogleMap extends Component {
   constructor(props) {
@@ -49,6 +50,9 @@ class GoogleMap extends Component {
       //Call helper method to create description for Marker
       this.addInfoWindow(mark, this.props.game);
     });
+    //Add this marker to DB
+    console.log({game: this.props.game, location: this.props.location.location});
+    this.props.addEvent({game: this.props.game, location: this.props.location.location});
   }
 
 
@@ -66,4 +70,4 @@ class GoogleMap extends Component {
 function mapStateToProps(state) {
   return { location: state.location };
 }
-export default connect(mapStateToProps)(GoogleMap);
+export default connect(mapStateToProps, actions)(GoogleMap);

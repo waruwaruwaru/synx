@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const gameEventSchema = new Schema({
   game: String,
-  address: String
+  location: String
 })
 
 module.exports = mongoose.model('gameEvent', gameEventSchema)
