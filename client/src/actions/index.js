@@ -120,7 +120,6 @@ export function addEvent({game, location}) {
 
 export function fetchMarkers() {
   return function(dispatch) {
-    console.log(`${ROOT_URL}/fetchEvents`);
     axios.get(`${ROOT_URL}/fetchEvents`)
       .then(response => {
         dispatch({

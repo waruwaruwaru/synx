@@ -12,9 +12,7 @@ class GoogleMap extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchMarkers().then((res) => {
-      console.log(res);
-    });
+    this.props.fetchMarkers();
   }
 
   componentDidMount() {
@@ -28,7 +26,8 @@ class GoogleMap extends Component {
     //So... what happen is when you console.log this.props.fetchMarkers, it is giving the initial state before
     //the AJAX call finished, which is an empty object {}.
     //http://stackoverflow.com/questions/39243725/wait-for-an-ajax-request-to-complete-in-react
-    //NEED TO ANTI-JSON.stringify so actual markers
+    //I moved this logic to addMarker() method button, but ideally you should make it display when page load
+    //without the help of a button
   }
 
 
@@ -60,6 +59,18 @@ class GoogleMap extends Component {
     //Add this marker to DB
     // console.log({game: this.props.game, location: this.props.location.location});
     this.props.addEvent({game: this.props.game, location: this.props.location.location});
+    console.log(this.props.fetchedMarkers.markers);
+    for(var i = 0; i < this.props.fetchedMarkers.markers.length; i++) {
+      var mark;
+      var game = this.props.fetchedMarkers.markers[i].game;
+      var location = JSON.parse(this.props.fetchedMarkers.markers[i].location);
+      //Display marker location on Google Map
+      mark = new google.maps.Marker({
+        position: location,
+        map: map
+      });
+      this.addInfoWindow(location, game);
+    }
   }
 
 
