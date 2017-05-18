@@ -39,6 +39,7 @@ class Header extends Component {
           <nav id="nav">
             <ul>
               <li key={4}><Link to='feature'>Find</Link></li>
+              <li key={5}><Link to='chat'>Chat</Link></li>
                 {this.renderLinks()}
             </ul>
           </nav>

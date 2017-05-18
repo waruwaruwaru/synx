@@ -7,6 +7,7 @@ import reduxThunk from 'redux-thunk';
 
 import App from './components/app';
 import Feature from './components/feature';
+import Chat from './components/chat';
 import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
@@ -36,6 +37,7 @@ ReactDOM.render(
         <Route path="signup" component={Signup} />
         <Route path="guest" component={Guest} />
         <Route path="feature" component={requireAuth(Feature)} />
+        <Route path="chat" component={requireAuth(Chat)} />
       </Route>
     </Router>
   </Provider>
