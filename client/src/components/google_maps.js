@@ -11,9 +11,10 @@ class GoogleMap extends Component {
     }
   }
 
-  componentWillMount() {
-    this.props.fetchMarkers();
-  }
+  // componentWillMount() {
+  //
+  //
+  // }
 
   componentDidMount() {
     var uluru = {lat: 37.8044, lng: -122.419416};
@@ -22,6 +23,20 @@ class GoogleMap extends Component {
     center: uluru
     });
 
+    this.props.fetchMarkers().then((res) => {
+      for(var i = 0; i < res.data.length; i++) {
+        var mark;
+        var game = res.data[i].game;
+        console.log(res.data[i].location);
+        var location = JSON.parse(res.data[i].location);
+        //Display marker location on Google Map
+        mark = new google.maps.Marker({
+          position: location,
+          map: this.state.map
+        });
+        this.addInfoWindow(mark, game);
+      }
+    });
     //You are getting an empty on fetchedMarkers because maybe it takes too long for AJAX call to finish,
     //So... what happen is when you console.log this.props.fetchMarkers, it is giving the initial state before
     //the AJAX call finished, which is an empty object {}.
@@ -59,18 +74,6 @@ class GoogleMap extends Component {
     //Add this marker to DB
     // console.log({game: this.props.game, location: this.props.location.location});
     this.props.addEvent({game: this.props.game, location: this.props.location.location});
-    console.log(this.props.fetchedMarkers.markers);
-    for(var i = 0; i < this.props.fetchedMarkers.markers.length; i++) {
-      var mark;
-      var game = this.props.fetchedMarkers.markers[i].game;
-      var location = JSON.parse(this.props.fetchedMarkers.markers[i].location);
-      //Display marker location on Google Map
-      mark = new google.maps.Marker({
-        position: location,
-        map: map
-      });
-      this.addInfoWindow(location, game);
-    }
   }
 
 
