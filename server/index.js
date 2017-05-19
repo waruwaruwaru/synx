@@ -8,6 +8,7 @@ const router = require('./router');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+
 //DB Setup
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:synx/synx');
@@ -22,11 +23,20 @@ app.use(cors());
 app.use(bodyParser.json({ type: '*/*'}));
 router(app);
 
-//Server, getting express to talk to outside world
 
+//Server, getting express to talk to outside world
 const port = process.env.PORT || 3090;
 //This http.createServer lets you create a server that knows how to receive a request and forward it
 //to express application
 const server = http.createServer(app);
 server.listen(port);
 console.log('Server listening to:', port);
+
+//socket.io stuff
+const io = require('socket.io')(server);
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
