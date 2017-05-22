@@ -11,8 +11,17 @@ class Chat extends Component {
   }
   render() {
     return (
-      <div id="chat">
-
+      <div className="chat">
+        <input type="text" className="chat-name" placeholder="Enter your name" />
+        <div className="chat-messages">
+          <div className="chat-message">Susan: Meow</div>
+          <div className="chat-message">Issac: Wolf!</div>
+          <div className="chat-message">ASdF: ASDF!</div>
+          <div className="chat-message">asddsffs: asdasd</div>
+          <div className="chat-message">qweqwe: qwerty</div>
+        </div>
+        <textarea placeholder="Type your messages"></textarea>
+        <div className="chat-status">Status: <span>Idle</span> </div>
       </div>
     );
   }
