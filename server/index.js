@@ -1,3 +1,4 @@
+
 //Main starting point of the application
 const express = require('express');
 const http = require('http');
@@ -12,6 +13,7 @@ const cors = require('cors');
 //DB Setup
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:synx/synx');
+
 
 //App, all about getting express working
 //morgan and bodyParser are both middlewares, any incoming request will go to them. app.use register them as middlewares

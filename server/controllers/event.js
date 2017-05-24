@@ -21,6 +21,6 @@ exports.fetchEvents = function(req, res, next) {
   GameEvent.find(function(err, game) {
     if(err)
       res.json("error");
-    res.send(game);  
+    res.send(game);
   });
 }
