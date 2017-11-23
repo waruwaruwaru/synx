@@ -10,6 +10,6 @@ Hosted on MongoDB synx
 
 
 ### Screenshots
-![alt text](https://github.com/waruwaruwaru/synx/img/home.png)
-![alt text](https://github.com/waruwaruwaru/synx/img/login.png)
-![alt text](https://github.com/waruwaruwaru/synx/img/action.png)
+![alt text](img/home.png)
+![alt text](img/login.png)
+![alt text](img/action.png)
