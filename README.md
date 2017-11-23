@@ -8,3 +8,8 @@ Nodemon, body-parser, morgan, express, passport-local, passport-js, passport-jwt
 # database
 Hosted on MongoDB synx
 
+
+### Screenshots
+![alt text](https://github.com/waruwaruwaru/synx/img/home.png)
+![alt text](https://github.com/waruwaruwaru/synx/img/login.png)
+![alt text](https://github.com/waruwaruwaru/synx/img/action.png)
